@@ -1,0 +1,8 @@
+<ion-list *ngIf="resultados && resultados.length > 0">
+  <ion-item *ngFor="let resultado of resultados" (click)="seleccionarDestino(resultado)">
+    <ion-label>{{ resultado.name }}, {{ resultado.country }}</ion-label>
+    <ion-button fill="clear" slot="end" (click)="agregarADeseos(resultado)">
+      <ion-icon name="heart-outline"></ion-icon>
+    </ion-button>
+  </ion-item>
+</ion-list>

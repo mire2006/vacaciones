@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">Destinos Vacacionales</ion-title>
+  </ion-toolbar>
+  <ion-searchbar 
+    [debounce]="2000" 
+    (ionInput)="buscarDestinos($event)"
+    placeholder="Buscar destinos">
+  </ion-searchbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let destino of destinos">
+      <ion-avatar slot="start">
+        <img [src]="destino.imagen" /> 
+      </ion-avatar>
+      <ion-label>
+        <h2>{{destino.nombre}}</h2>
+        <p><b>{{destino.pais}}</b></p>
+      </ion-label>
+      <ion-button fill="clear" slot="end" (click)="abrirModalValorVuelo(destino)"> 
+        <ion-icon name="airplane-outline" class="icon-small"></ion-icon>
+      </ion-button>
+      <div slot="end" class="precio-destino" *ngIf="destino.precio">
+        ${{destino.precio | number:'1.0-0'}} 
+      </div>
+      <ion-button fill="clear" slot="end" (click)="capturarImagen(destino)">
+        <ion-icon name="camera-outline" class="icon-small"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" slot="end" (click)="abrirModalEliminar(destino)">
+        <ion-icon name="trash-outline" class="icon-small"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+  
+  <app-resultados-busqueda 
+    *ngIf="resultadosBusqueda && resultadosBusqueda.length > 0"
+    [resultados]="resultadosBusqueda"
+    (agregarADeseosEvent)="agregarADeseos($event)"> 
+  </app-resultados-busqueda>
+</ion-content>
+

@@ -1,0 +1,12 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Confirmar Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <p>¿Es el precio correcto del vuelo a {{ destino.nombre }}?</p>
+
+  <ion-button expand="block" (click)="confirmar()">Sí, registrar</ion-button>
+  <ion-button expand="block" fill="outline" (click)="cancelar()">Cancelar</ion-button>
+</ion-content>
